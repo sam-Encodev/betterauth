@@ -12,7 +12,7 @@ if (!dbname) {
     throw new Error("Database name is not configured");
 }
 
-const client = new MongoClient(dburl);
+const client = new MongoClient(`${dburl}/${dbname}`);
 async function run() {
     try {
         await client.connect();
