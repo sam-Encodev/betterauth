@@ -10,3 +10,16 @@ export const authClient = createAuthClient({
   plugins: [adminClient()],
   trustedOrigins: [String(baseurl)],
 });
+
+export const {
+ signIn,
+ signUp,
+ signOut,
+ getSession,
+ useSession,
+ listSessions,
+ revokeSession,
+ changePassword,
+ revokeSessions,
+ getAccessToken,
+} = authClient;

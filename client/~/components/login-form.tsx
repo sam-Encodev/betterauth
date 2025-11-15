@@ -13,7 +13,7 @@ import {
 import { Input } from "~/components/ui/input";
 import { login } from "~/lib/schema";
 import { cn } from "~/lib/utils";
-import { authClient } from "../lib/better-auth";
+import { signIn } from "../lib/better-auth";
 import { Spinner } from "./ui/spinner";
 
 export function LoginForm({
@@ -30,10 +30,6 @@ export function LoginForm({
   const {
     register,
     handleSubmit,
-    watch,
-    reset,
-    setError,
-    control,
     formState: { errors },
   } = useForm<LoginFormValues>({
     criteriaMode: "all",
@@ -46,7 +42,7 @@ export function LoginForm({
 
   const onSubmit = async (data: LoginFormValues) => {
     setLoading(true);
-    const { data: result, error } = await authClient.signIn.email(
+    const { data: result, error } = await signIn.email(
       {
         email: "atemi@gmail.com",
         password: "qwertyuiop",

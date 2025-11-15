@@ -19,7 +19,7 @@ import {
   navigationMenuTriggerStyle,
 } from "~/components/ui/navigation-menu";
 import { useIsMobile } from "~/hooks/use-mobile";
-import { authClient } from "~/lib/better-auth";
+import { useSession, signOut, revokeSessions } from "~/lib/better-auth";
 import { Button } from "./ui/button";
 
 const components: { title: string; href: string; description: string }[] = [
@@ -63,10 +63,10 @@ const components: { title: string; href: string; description: string }[] = [
 export function NavigationMenuDemo() {
   const navigate = useNavigate();
   const isMobile = useIsMobile();
-  const data = authClient.useSession();
+  const data = useSession();
   const logout = async () => {
     try {
-      await authClient.signOut({
+      await signOut({
         fetchOptions: {
           onSuccess: () => {
             navigate("/login");
@@ -85,7 +85,7 @@ export function NavigationMenuDemo() {
         description: "An error occurred during logout",
       });
     } finally {
-      authClient.revokeSession;
+      revokeSessions();
     }
   };
 

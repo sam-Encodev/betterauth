@@ -23,7 +23,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "~/components/ui/sidebar";
-import { authClient } from "~/lib/better-auth";
+import { signOut, revokeSessions } from "~/lib/better-auth";
 
 export function NavUser({
   user,
@@ -39,7 +39,7 @@ export function NavUser({
 
   const logout = async () => {
     try {
-      await authClient.signOut({
+      await signOut({
         fetchOptions: {
           onSuccess: () => {
             navigate("/login");
@@ -58,7 +58,7 @@ export function NavUser({
         description: "An error occurred during logout",
       });
     } finally {
-      authClient.revokeSession;
+      revokeSessions();
     }
   };
 

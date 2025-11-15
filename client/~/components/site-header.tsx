@@ -2,7 +2,7 @@ import { DoorClosed, LogOutIcon } from "lucide-react";
 import { Separator } from "~/components/ui/separator";
 import { useNavigate, useLocation } from "react-router";
 import { SidebarTrigger } from "~/components/ui/sidebar";
-import { authClient } from "../lib/better-auth";
+import { revokeSessions, signOut } from "../lib/better-auth";
 import { SidebarMenuButton } from "~/components/ui/sidebar";
 
 export function SiteHeader() {
@@ -13,8 +13,8 @@ export function SiteHeader() {
   const split = currentPath.split("/");
 
   async function logout() {
-    await authClient.revokeSessions();
-    await authClient.signOut();
+    await revokeSessions();
+    await signOut();
     navigate("/", { replace: true });
   }
 

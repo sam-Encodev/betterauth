@@ -5,11 +5,11 @@ import { DataTable } from "~/components/data-table";
 import { SectionCards } from "~/components/section-cards";
 import { SiteHeader } from "~/components/site-header";
 import { SidebarInset, SidebarProvider } from "~/components/ui/sidebar";
-import { authClient } from "~/lib/better-auth";
+import { useSession } from "~/lib/better-auth";
 import data from "../dashboard/data.json";
 
-export default function Page() {
-  const session = authClient.useSession();
+export default async function Page() {
+  const session = useSession();
 
   if (!session) {
     redirect("/login");

@@ -11,7 +11,7 @@ import {
   FieldSeparator,
 } from "~/components/ui/field";
 import { Input } from "~/components/ui/input";
-import { authClient } from "~/lib/better-auth";
+import { signUp} from "~/lib/better-auth";
 import { signup } from "~/lib/schema";
 import { cn } from "~/lib/utils";
 import { Spinner } from "./ui/spinner";
@@ -50,7 +50,7 @@ export function SignupForm({
 
   const onSubmit = async (data: SignupFormValues) => {
     setLoading(true);
-    const { data: result, error } = await authClient.signUp.email(
+    const { data: result, error } = await signUp.email(
       {
         email: data.email,
         password: data.password,
