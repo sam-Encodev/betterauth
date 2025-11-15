@@ -3,6 +3,8 @@ import express from "express";
 import bodyParser from "body-parser";
 import { auth, origin } from "./betterauth";
 import { fromNodeHeaders, toNodeHandler } from "better-auth/node";
+import { router } from "./routes/index";
+
 
 const app = express();
 app.use(
@@ -25,5 +27,7 @@ app.use(bodyParser.json());
 app.disable("x-powered-by");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
+
+app.use("/", router);
 
 export { app };

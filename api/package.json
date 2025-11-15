@@ -23,7 +23,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "bun api/index.ts",
+    "start": "bun app.ts",
     "dev": "bun --watch app.ts",
     "biome": "bunx biome check --write"
   }
