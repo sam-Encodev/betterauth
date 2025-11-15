@@ -18,7 +18,7 @@ export function SiteHeader() {
     navigate("/", { replace: true });
   }
 
-  async function home() {
+   function home() {
     navigate("/", { replace: true });
   }
 

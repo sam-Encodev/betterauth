@@ -8,7 +8,7 @@ import { SidebarInset, SidebarProvider } from "~/components/ui/sidebar";
 import { useSession } from "~/lib/better-auth";
 import data from "../dashboard/data.json";
 
-export default async function Page() {
+export default function Page() {
   const session = useSession();
 
   if (!session) {
