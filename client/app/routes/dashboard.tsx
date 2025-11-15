@@ -15,7 +15,7 @@ export default function Page() {
     redirect("/login");
   }
 
-  const user = session.data?.user;
+  const user = session?.data?.user;
 
   console.log({ user })
 
